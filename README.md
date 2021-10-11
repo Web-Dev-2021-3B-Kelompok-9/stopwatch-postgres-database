@@ -1,4 +1,4 @@
-# stopwatch_v2
+# stopwatch-postgresql
 
 ### Installation
 
@@ -17,3 +17,4 @@
    ```
 5. open web
    http://localhost:3000/
+
