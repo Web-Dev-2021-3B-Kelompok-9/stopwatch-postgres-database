@@ -9,8 +9,8 @@ Berikut software yang dibutuhkan untuk menjalankan program
 ### Database preparation
 
 Membuat database task-monitoring:
-- bukaa pdAdmin
-- dalam data base , buat database dengan nama "task-monitoring"
+- bukaa pgAdmin
+- dalam database , buat database dengan nama "task-monitoring"
 - dalam "task-monitoring", masuk ke scema -> public -> table
 - dalam table, buat table dengan properties sbb : 
     (nama kolom) : (tipe data)
@@ -29,7 +29,7 @@ Membuat database task-monitoring:
     - time_end_ss: integer
     - time_cycle: integer
     - text_id: text
-- referesnsi pembuatan data base postgres sql : https://www.youtube.com/watch?v=uoJjDbL-Y_E
+- referensi pembuatan data base postgres sql : https://www.youtube.com/watch?v=uoJjDbL-Y_E
 
 ### Installation
 
