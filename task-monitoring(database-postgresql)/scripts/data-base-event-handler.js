@@ -73,43 +73,4 @@ const delete_task = (id) => {
     }
 }
 
-const add_task2 = (
-    temp_id , temp_stopwatch_time_hh , temp_stopwatch_time_mm , temp_stopwatch_time_ss  , 
-    temp_tittle , temp_is_task_not_completed , temp_is_time_paused , temp_deadline ,
-    temp_timer_on , temp_is_end , temp_time_end_hh , temp_time_end_mm , temp_time_end_ss ,
-    temp_time_cycle , temp_text_id
-) =>{
-// post task, need all off the element from task 
-// add new task to the database
-const temp_post_task = {
-id: temp_id,
-stopwatch_time_hh: temp_stopwatch_time_hh,
-stopwatch_time_mm: temp_stopwatch_time_mm,
-stopwatch_time_ss: temp_stopwatch_time_ss,
-tittle: temp_tittle,
-is_task_not_completed: temp_is_task_not_completed,
-is_time_paused: temp_is_time_paused,
-deadline: temp_deadline,
-timer_on: temp_timer_on, 
-is_end: temp_is_end, 
-time_end_hh: temp_time_end_hh, 
-time_end_mm: temp_time_end_mm, 
-time_end_ss: temp_time_end_ss, 
-time_cycle: temp_time_cycle, 
-text_id: temp_text_id
-};    
-try {
-let result = fetch('/task_list', {
-method: 'POST',
-headers: {
-    'Content-Type': 'application/json',
-    'Accept': 'application/json'
-},
-body: JSON.stringify(temp_post_task)
-})
-result.then((sucess) => { console.log(sucess) })
-} catch (error) {
-console.log(error)
-}
-}
 export { get_task_list , get_task_by_id , add_task , update_task , delete_task }
