@@ -124,10 +124,10 @@ const cekIsTimePaused = () => {
 }
 
 
-// database CRUD ------------------
+// ------------------ CRUD database ------------------ //
 
 const isDatabaseExist = () => {
-    // check browser support local storage
+    // check is database available or not
     const taskList = get_task_list();
     if(typeof(taskList) === undefined){
         alert("server is down, check your database connection");
@@ -137,6 +137,9 @@ const isDatabaseExist = () => {
 }
 
 const parseToDatabaseTaskObject = (Task) => {
+    // parsed task object, 
+    // postgres cant save an object data type in one cell
+    // so we need to extract stopwatch and time 
     return {
         id: Task.id,
         stopwatch_time_hh: Task.Stopwatch.Time.hh,
@@ -156,13 +159,15 @@ const parseToDatabaseTaskObject = (Task) => {
       };
 }
 
-const dataBaseSaveDataTask = (id) => {    
-    let updatedTask
-    taskListData.forEach(item => {
-        updatedTask = parseToDatabaseTaskObject(GetTaskByID(item.id));
-    });
-    document.dispatchEvent(new Event("ondatasaved"));
-}
+// this only sample funcitn for testing 
+// const dataBaseSaveDataTask = (id) => {   
+//     // get all data from database and save it in temporary variable for task list 
+//     let updatedTask
+//     taskListData.forEach(item => {
+//         updatedTask = parseToDatabaseTaskObject(GetTaskByID(item.id));
+//     });
+//     document.dispatchEvent(new Event("ondatasaved"));
+// }
 
 const dataBaseUpdateDataTask = (id) => {
     // update specified task to database
@@ -173,19 +178,19 @@ const dataBaseUpdateDataTask = (id) => {
 
 const dataBaseAddDataTask = (id) => {
     // add new task to database
+    // use id to get specified task and parse it
     const addedTask = parseToDatabaseTaskObject(GetTaskByID(id));
     add_task(addedTask);
     document.dispatchEvent(new Event("ondataupdated"));
 }
 
 const dataBaseDeleteData = (id) => {
-    // update specified task to database
     delete_task(id);
     document.dispatchEvent(new Event("ondataupdated"));
 }
 
 const dataBaseGetTaskList = async () => {
-        // load taskListData from local storage
+        // load taskListData from database 
         let serializedData 
         serializedData = await get_task_list();
         let data = parseToDatabaseTaskObject(serializedData);
@@ -193,7 +198,8 @@ const dataBaseGetTaskList = async () => {
         let tempTask;
         if(data !== null){
             data.forEach(element => {
-                // because local storage can only store string ,  we need to redeclared the object that stored
+                // because database can't store object , the object data will be converted
+                // we need to redeclared the object to get the data back
     
                 // parse Stopwatch as an object of stopwatch 
                 let tempStopwatch = new Stopwatch(element.id);
@@ -225,8 +231,8 @@ const dataBaseGetTaskList = async () => {
         return taskList;
 }
 
-const dataBaseGetTaskListById = async (id) => {
-        // load taskListData from local storage
+const dataBaseGetTaskById = async (id) => {
+        // load one specified task from local storage
         const serializedData = await get_task_by_id(id);
         let element = parseToDatabaseTaskObject(serializedData);
         let tempTask;
@@ -260,7 +266,7 @@ const dataBaseGetTaskListById = async (id) => {
 }
 
 const dataBaseLoadListData = async () => {
-    // load taskListData from local storage
+    // load taskListData from database
 
     const serializedData = await get_task_list();
     let data = serializedData;
@@ -306,6 +312,6 @@ export {
         createNewTaskObject , cekRunningStopwatchID , 
         cekIsTimePaused , GetTaskByID , dataBaseUpdateDataTask , 
         taskListData , dataBaseAddDataTask , dataBaseDeleteData , 
-        dataBaseLoadListData , isDatabaseExist , dataBaseSaveDataTask ,
-        dataBaseGetTaskList , dataBaseGetTaskListById
+        dataBaseLoadListData , isDatabaseExist , 
+        dataBaseGetTaskList , dataBaseGetTaskById
     }

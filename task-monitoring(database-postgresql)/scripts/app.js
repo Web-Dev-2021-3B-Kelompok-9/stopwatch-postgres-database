@@ -15,7 +15,6 @@ document.getElementById("test-button2").addEventListener("click",()=>{
 
 document.addEventListener("DOMContentLoaded", function () {
     // when page opened, active add task in form module and check local storage for task database
-
     const submitForm = document.getElementById(ID.INPUT_TASK);
     submitForm.addEventListener("submit", function (event) {
         event.preventDefault();
@@ -49,12 +48,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
     )();
-    // if(isStorageExist()){
-    //     // check local storage and update temp variable taskListData here
-    //     loadDataFromStorage();
-    // }
-    
-
 });
 
 document.addEventListener("ondatasaved", () => {

@@ -12,8 +12,8 @@ const get_task_list = async () =>{
 }
 
 const get_task_by_id = async (id) =>{
-    // get specified task list, use id as argument 
-    // return object of task
+    // get task use id as an argument
+    // return promise of task (use async~await function to get the data)
     let     url =`/task_list/${id}`;
     try {
         let res = await fetch(url);
@@ -26,7 +26,6 @@ const get_task_by_id = async (id) =>{
 const add_task = (temp_post_task) =>{
     // post task, need all off the element from task 
     // add new task to the database
-
     try {
         let result = fetch('/task_list', {
             method: 'POST',
@@ -43,7 +42,7 @@ const add_task = (temp_post_task) =>{
 }
 
 const update_task = (temp_post_task) =>{
-    // update task, need all off the element from task 
+    // update task, temp_post_task is object of task (need to parsed)
     // change value of task element in the database to the new one
     try {
         let result = fetch(`/task_list/${temp_post_task.id}`, {
@@ -61,8 +60,6 @@ const update_task = (temp_post_task) =>{
 }
 
 const delete_task = (id) => {
-    // delete task, need id
-    // change value of task element in the database to the new one
     try {
         let result = fetch(`/task_list/${id}`, {
         method: 'DELETE'
