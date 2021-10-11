@@ -1,1 +1,1 @@
-# stopwatch_v2
+# stopwatch-postgresql
