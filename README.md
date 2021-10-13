@@ -9,7 +9,7 @@ Berikut software yang dibutuhkan untuk menjalankan program
 ### Database preparation
 
 Membuat database task-monitoring:
-- bukaa pgAdmin
+- buka pgAdmin
 - dalam database , buat database dengan nama "task-monitoring"
 - dalam "task-monitoring", masuk ke scema -> public -> table
 - dalam table, buat table dengan properties sbb : 
