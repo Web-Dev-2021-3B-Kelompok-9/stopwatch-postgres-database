@@ -1,5 +1,9 @@
 # stopwatch-postgresql
 
+### Deskripsi
+Kelompok 9
+Mini Project ini mengenai pengembangan aplikasi stopwatch yang telah dibuat. Stopwatch dikembangkan dengan menambahkan library Sequelize dan Axios. pada aplikasi Stopwatc yang telah dibuat
+
 ### Prerequisites
 
 Berikut software yang dibutuhkan untuk menjalankan program
