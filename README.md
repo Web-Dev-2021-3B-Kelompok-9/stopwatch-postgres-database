@@ -1,4 +1,4 @@
-# stopwatch-postgresql
+# Stopwatch-postgresql
 
 ### Deskripsi
 Kelompok 9
